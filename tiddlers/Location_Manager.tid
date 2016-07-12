@@ -1,0 +1,26 @@
+created: 20160712085026437
+modified: 20160712094522332
+tags: xcode ios swift development location
+title: Location Manager
+type: text/vnd.tiddlywiki
+
+Since iOS 9, location permissions must be obtained before accessing location and the following steps must be taken:
+
+1. Import CoreLocation
+
+2. Your view controller must be a `CLLocationManagerDelegate`
+
+3. You must write options for NSLocationWhenInUseUsageDescription or 
+NSLocationAlwaysUsageDescription in info.plist
+
+```swift
+locationManager = CLLocationManager()
+        if(CLLocationManager.locationServicesEnabled()) {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        
+            print("listening")
+        }
+```
